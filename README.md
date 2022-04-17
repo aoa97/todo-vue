@@ -55,6 +55,7 @@ This application was created as a submission to Devhallenges [challenge](https:/
 - User can between All, Active and Completed
 - User can remove one or all tasks under the Completed tab
 - User can store the data in local storage that when refreshing the page, User can still see my progress
+- User can view the application on different screens
 
 ## How To Use
 
