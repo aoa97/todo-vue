@@ -1,9 +1,5 @@
 <template>
-  <button
-    class="delete-all"
-    v-show="this.menuToggle() == 2"
-    @click="deleteCompleted()"
-  >
+  <button v-show="menuToggle == 2" @click="deleteCompleted()">
     <span class="material-icons"> delete_outline </span>
     delete all
   </button>
@@ -12,21 +8,22 @@
 <script>
 export default {
   name: "DeleteCompleted",
-  inject: ["menuToggle", "todos", "setMenuToggle", "setTodos"],
+  props: ["todos", "menuToggle"],
+  emits: ["setTodos", "setMenuToggle"],
 
   methods: {
     deleteCompleted() {
-      const todos = this.todos().filter((t) => !t.done);
-      this.setTodos(todos);
-      localStorage.setItem("todos", JSON.stringify(todos));
-      this.setMenuToggle(0); // toggle to all
+      const todos = this.todos.filter((t) => !t.done);
+      this.$emit("setTodos", todos);
+      localStorage.setItem("todos", JSON.stringify(this.todos));
+      this.$emit("setMenuToggle", 0);
     },
   },
 };
 </script>
 
-<style scoped>
-button.delete-all {
+<style scoped lang="scss">
+button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -40,14 +37,14 @@ button.delete-all {
   opacity: 0.8;
   transition: opacity 0.5s ease;
   margin-left: auto;
-}
 
-button.delete-all span {
-  font-size: 1.2rem;
-  margin-right: 0.55rem;
-}
+  &:hover {
+    opacity: 1;
+  }
 
-button.delete-all:hover {
-  opacity: 1;
+  span {
+    font-size: 1.2rem;
+    margin-right: 0.55rem;
+  }
 }
 </style>
