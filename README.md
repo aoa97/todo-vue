@@ -68,7 +68,7 @@ To clone and run this application, you'll need [Git](https://git-scm.com) and [N
 $ npm install -g @vue/cli
 
 # Clone this repository
-$ git clone https://github.com/your-user-name/your-project-name
+$ git clone https://github.com/aoa97/todo-vue
 
 # Install dependencies
 $ npm install
